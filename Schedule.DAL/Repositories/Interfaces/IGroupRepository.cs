@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Schedule.DAL.Repositories.Interfaces
+using Schedule.DAL.Entities;
+
+namespace Schedule.DAL.Repositories.Interfaces;
+
+public interface IGroupRepository : IRepository<Group>
 {
-    internal class IGroupRepository
-    {
-    }
+    Task<IEnumerable<Group>> GetByDepartmentAsync(int departmentId);
 }

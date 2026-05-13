@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Schedule.DAL.Repositories.Interfaces
+using Schedule.DAL.Entities;
+
+namespace Schedule.DAL.Repositories.Interfaces;
+
+public interface ITeacherRepository : IRepository<Teacher>
 {
-    internal class ITeacherRepository
-    {
-    }
+    Task<IEnumerable<Teacher>> GetByDepartmentAsync(int departmentId);
+    Task<Teacher?> GetWithDisciplinesAsync(int teacherId);
+    Task<IEnumerable<Teacher>> GetByDisciplineAsync(int disciplineId);
 }

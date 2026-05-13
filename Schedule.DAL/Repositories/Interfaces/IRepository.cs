@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Schedule.DAL.Repositories.Interfaces
+namespace Schedule.DAL.Repositories.Interfaces;
+
+public interface IRepository<T> where T : class
 {
-    internal class Class1
-    {
-    }
+    Task<IEnumerable<T>> GetAllAsync();
+    Task<T?> GetByIdAsync(int id);
+    Task AddAsync(T entity);
+    void Update(T entity);
+    void Delete(T entity);
 }
