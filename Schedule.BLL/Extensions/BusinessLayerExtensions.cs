@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Schedule.BLL.Mapping;
 using Schedule.BLL.Services;
@@ -10,7 +9,7 @@ using Schedule.DAL.Repositories.Interfaces;
 
 namespace Schedule.BLL.Extensions;
 
-public static class BusinessLayerExtensions
+public static class BllExtensions 
 {
     public static IServiceCollection AddBusinessLayer(
         this IServiceCollection services,
@@ -20,13 +19,8 @@ public static class BusinessLayerExtensions
             options.UseSqlServer(connectionString));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
         services.AddAutoMapper(cfg => cfg.AddProfile<ScheduleMappingProfile>());
-
         services.AddScoped<IScheduleService, ScheduleService>();
-
-
-        // BLL сервіси — Програміст 2 і 3 додадуть свої після реалізації
 
         return services;
     }
